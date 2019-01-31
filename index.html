@@ -1,0 +1,65 @@
+<html>
+ <head>
+  <title>Merchant Web Service</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+ </head>
+ <body>
+	<br/>
+	<div>
+		<div style="text-align:center;">
+			<h1>Merchant Web Service - PHP SDK</h1>
+		</div>
+		
+		<br/>
+	</div>
+	
+	<table width="100%" border="1" colspan="5">
+		<tr>
+			<td width="20%" style="text-align:center;">
+				<button class="button" type="button" value="CreateExpressToken">CreateExpressToken</button>
+			</td>
+			<td>
+				<textarea style="width:100%;" id="divCreateExpressToken" rows="6" cols="100%" readonly="readonly" style="border:none;overflow:hidden"></textarea>				
+			</td>
+		</tr>
+		<tr>
+			<td width="20%" style="text-align:center;">
+				<button class="button" type="button" value="GetNewOperationActivity">GetNewOperationActivity</button>
+			</td>
+			<td>
+				<textarea style="width:100%;" id="divGetNewOperationActivity" rows="7" cols="100%" readonly="readonly" style="border:none;overflow:hidden"></textarea>				
+			</td>
+		</tr>
+		<tr>
+			<td width="20%" style="text-align:center;">
+				<button class="button" type="button" value="ConfirmNewOperationActivity">GetNewOperationActivity</button>
+			</td>
+			<td>
+				<textarea style="width:100%;" id="divConfirmNewOperationActivity" rows="4" cols="100%" readonly="readonly" style="border:none;overflow:hidden"></textarea>				
+			</td>
+		</tr>
+		<!--<tr>
+			<td width="20%" style="text-align:center;">
+				<button class="button" type="button" value="VoidTransaction"> Crear GetNewOperationActivity!</button>
+			</td>
+			<td>
+				<textarea style="width:100%;" id="divVoidTransaction" rows="5" cols="100%" readonly="readonly" style="border:none;overflow:hidden"></textarea>				
+			</td>
+		</tr>-->
+	</table>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var ajaxurl = 'mwsapi.php';
+			
+			$('.button').click(function(){
+				var action = $(this).val();
+				data =  {'action': action};
+				$.post(ajaxurl, data, function (response) {
+					$('#div' + action).html(response);
+				});
+			});			
+		});
+	</script>
+ </body>
+</html>
